@@ -1,44 +1,33 @@
 package com.chinamobile.iot.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiResponse;
-
 /**
  * Created by szl on 2017/1/9.
  */
-@ApiModel(value = "Student", description = "学生信息描述")
 public class Student {
 
     /**
      * 学号
      */
-    @ApiModelProperty("学号")
     private int id;
     /**
      * 姓名
      */
-    @ApiModelProperty("姓名")
     private String name;
     /**
      * 年龄
      */
-    @ApiModelProperty("年龄")
     private int age;
     /**
      * 性别
      */
-    @ApiModelProperty("性别")
     private String sex;
     /**
      * 班级
      */
-    @ApiModelProperty("班级")
     private String cls;
     /**
      * 住址
      */
-    @ApiModelProperty("家庭住址")
     private String address;
 
 
