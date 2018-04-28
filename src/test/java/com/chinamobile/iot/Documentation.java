@@ -19,9 +19,9 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.relaxedResponseFields;
-import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 /**
  * Created by szl on 2017/1/9.
@@ -37,8 +37,8 @@ public class Documentation {
     @Before
     public void setUp() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-                .apply(documentationConfiguration(this.restDocumentation))
-                .alwaysDo(document("{method-name}/{step}/"))
+                .apply(documentationConfiguration(this.restDocumentation).operationPreprocessors().withResponseDefaults(prettyPrint()))
+
                 .build();
     }
 
@@ -61,7 +61,8 @@ public class Documentation {
         mockMvc.perform(post("/student").contentType(MediaType.APPLICATION_JSON)
                 .content(JSON.toJSONString(student))
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().is2xxSuccessful());
+                .andExpect(status().is2xxSuccessful())
+                .andDo(document("addStudent"));
     }
 
 

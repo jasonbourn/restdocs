@@ -11,18 +11,24 @@ This is an example output for a service running at http://localhost:8080:
 = 合伙人app
 
 === 查询用户
-
 .request
 include::{snippets}/getStudent/http-request.adoc[]
-
-.response
+.request body
+include::{snippets}/getStudent/request-body.adoc[]
+.request response
 include::{snippets}/getStudent/http-response.adoc[]
+.request body
+include::{snippets}/getStudent/response-fields.adoc[]
 
 === 添加用户
+
 .request
 include::{snippets}/addStudent/http-request.adoc[]
-
-.response
+.request body
+include::{snippets}/addStudent/request-body.adoc[]
+.request response
 include::{snippets}/addStudent/http-response.adoc[]
+.request body
+include::{snippets}/addStudent/response-body.adoc[]
 
 这个例子非常简单，通过单元测试和一些简单的配置就能够得到api文档了。
